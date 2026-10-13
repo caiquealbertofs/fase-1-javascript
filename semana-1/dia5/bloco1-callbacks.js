@@ -1,101 +1,166 @@
 // =================================
-// TEORIA - apenas para estudo
+// TEORIA: SÍNCRONO E ASSÍNCRONO
 // =================================
 
-// JavaScript é single-thread — executa uma coisa por vez
-// Mas precisa lidar com operações que demoram (rede, banco, arquivo)
-// Assincronismo é como ele resolve isso sem travar tudo
-
-// =================================
-// SÍNCRONO vs ASSÍNCRONO
-// =================================
-/*
-// Síncrono — executa em ordem, linha por linha
+// Código síncrono é executado em sequência: cada linha espera a anterior terminar.
+console.log("Execução síncrona:");
 console.log("1");
 console.log("2");
 console.log("3");
-// Imprime: 1, 2, 3
 
-// Assíncrono — não bloqueia, continua executando
+// setTimeout agenda uma função para mais tarde; ele não pausa o restante do programa.
+// Por isso, o "3" aparece antes do "2", mesmo estando depois do setTimeout.
+console.log("Execução assíncrona:");
 console.log("1");
 setTimeout(() => {
-  console.log("2"); // executa depois de 1 segundo
+  console.log("2 (executado depois de 1 segundo)");
 }, 1000);
 console.log("3");
-// Imprime: 1, 3, 2 — o 3 não espera o 2
 
-// =================================
-// CALLBACKS
-// =================================
-
-// Callback é uma função passada como argumento para outra função
-// Ela será chamada quando a operação terminar
-
+// Callback é uma função passada como argumento para ser chamada depois que uma tarefa termina.
+// O padrão error-first usa callback(erro, resultado): erro será null quando não houver falha.
 const buscarUsuarioTeoria = (id, callback) => {
   console.log(`Buscando usuário ${id}...`);
   setTimeout(() => {
-    const usuario = { id: 1, nome: "João", email: "joao@email.com" };
-    callback(null, usuario); // primeiro argumento é o erro (null = sem erro)
+    // O setTimeout simula uma operação demorada, como uma consulta a uma API ou banco de dados.
+    callback(null, { id, nome: "João", email: "joao@email.com" });
+  }, 1000);
+};
+
+buscarUsuarioTeoria(1, (erro, usuario) => {
+  // Sempre verifique o erro antes de usar o resultado.
+  if (erro) {
+    console.log("Erro ao buscar usuário na teoria:", erro.message);
+    return;
+  }
+
+  console.log("Usuário encontrado na teoria:", usuario);
+});
+
+// Callback hell acontece quando uma operação depende do resultado da anterior:
+// primeiro buscamos o usuário, depois os pedidos dele e, por fim, os produtos.
+const buscarPedidosTeoria = (userId, callback) => {
+  setTimeout(() => {
+    callback(null, [{ id: 101, produtoId: 501 }]);
+  }, 1000);
+};
+
+const buscarProdutosTeoria = (produtoId, callback) => {
+  setTimeout(() => {
+    callback(null, [{ id: produtoId, nome: "Livro" }]);
   }, 1000);
 };
 
 buscarUsuarioTeoria(1, (erro, usuario) => {
   if (erro) {
-    console.log("Erro:", erro);
+    console.log("Erro ao buscar usuário na teoria:", erro.message);
     return;
   }
-  console.log("Usuário encontrado:", usuario);
-});
 
-// =================================
-// CALLBACK HELL — o problema dos callbacks
-// =================================
+  buscarPedidosTeoria(usuario.id, (erroPedidos, pedidos) => {
+    // O id do usuário é necessário para buscar os pedidos.
+    if (erroPedidos) {
+      console.log("Erro ao buscar pedidos na teoria:", erroPedidos.message);
+      return;
+    }
 
-// Quando operações dependem umas das outras, o código vira uma pirâmide
-buscarUsuarioTeoria(1, (erro, usuario) => {
-  if (erro) return console.log(erro);
+    buscarProdutosTeoria(pedidos[0].produtoId, (erroProdutos, produtos) => {
+      // O id do produto veio do pedido retornado na etapa anterior.
+      if (erroProdutos) {
+        console.log("Erro ao buscar produtos na teoria:", erroProdutos.message);
+        return;
+      }
 
-  buscarPedidos(usuario.id, (erro, pedidos) => {
-    if (erro) return console.log(erro);
-
-    buscarProdutos(pedidos[0].id, (erro, produtos) => {
-      if (erro) return console.log(erro);
-
-      // cada nível dentro do outro — difícil de ler e manter
-      console.log(produtos);
+      console.log("Produtos do pedido na teoria:", produtos);
     });
   });
 });
 
-// Promises e async/await resolvem exatamente esse problema
+// Cada nível precisa tratar seu próprio erro; muitos níveis aninhados dificultam leitura e manutenção.
+// Promises e async/await são alternativas para organizar esse tipo de encadeamento.
+
+// =================================
+// EXERCÍCIOS
+// =================================
+
+/*
+EXERCICIO 1 - Simulando operações assíncronas:
+- buscarUsuario(id, callback) -> aguarda 1s e retorna { id, nome: "João" }
+- buscarEndereco(userId, callback) -> aguarda 1s e retorna { rua: "Av. Paulista", cidade: "São Paulo" }
+- calcularFrete(cidade, callback) -> aguarda 1s e retorna o valor do frete
+
+Encadeie as três operações: buscar o usuário, depois o endereço e, por fim, calcular o frete com a cidade do endereço.
+
+EXERCICIO 2 - Callback com erro:
+- se o id for menor que 1, chame callback(new Error("ID inválido"), null)
+- se o id for maior que 100, chame callback(new Error("Usuário não encontrado"), null)
+- caso contrário, retorne o usuário normalmente
+- teste os ids 0, 50 e 200
 */
-/* EXERCICIO 1 - Simulando Operações Assincronas: Crie funções com callback que simulam operações com setTimeout: buscarUsuario(id, callback) = aguarda 1 segundo e retorna { id, nome: "João"}. buscarEndereco(userId, callback) = aguarda 1 segundo e retorna { rua: "Av. Paulista", cidade: "São Paulo"}. calcularFrete(cidade, callback) = aguarda 1 segundo e retorna o valor do frete. Encadeie as três, buscando o usuário, depois o endereço, depois calcule o frente com a cidade do endereço. Observe o callback hell que se forma. */
 
 const buscarUsuario = (id, callback) => {
+  if (id < 1) {
+    return callback(new Error("ID inválido"), null);
+  }
+
+  if (id > 100) {
+    return callback(new Error("Usuário não encontrado"), null);
+  }
+
   setTimeout(() => {
     const usuario = { id, nome: "João" };
-    callback(usuario);
+    callback(null, usuario);
   }, 1000);
 };
+
 const buscarEndereco = (userId, callback) => {
   setTimeout(() => {
     const endereco = { rua: "Av. Paulista", cidade: "São Paulo" };
-    callback(endereco);
+    callback(null, endereco);
   }, 1000);
 };
+
 const calcularFrete = (cidade, callback) => {
   setTimeout(() => {
-    const frete = { frete: 1200 };
-    callback(frete);
+    const frete = { cidade, valor: 1200 };
+    callback(null, frete);
   }, 1000);
 };
 
-buscarUsuario(1, (usuario) => {
-  buscarEndereco(usuario.id, (endereco) => {
-    calcularFrete(endereco.cidade, (frete) => {
-      console.log(frete);
+const testarFluxo = (id) => {
+  buscarUsuario(id, (erro, usuario) => {
+    if (erro) {
+      console.log("Erro ao buscar usuário:", erro.message);
+      return;
+    }
+
+    buscarEndereco(usuario.id, (erroEndereco, endereco) => {
+      if (erroEndereco) {
+        console.log("Erro ao buscar endereço:", erroEndereco.message);
+        return;
+      }
+
+      calcularFrete(endereco.cidade, (erroFrete, frete) => {
+        if (erroFrete) {
+          console.log("Erro ao calcular frete:", erroFrete.message);
+          return;
+        }
+
+        console.log("Frete calculado:", frete);
+      });
     });
   });
-});
+};
 
-/* EXERCICIO 2 - Callback com erro: Modifique a função buscarUsuario para que: Se o id for menor 1, chame o callback com um erro: callback(new Error("ID inválido"), null), se o id for maior que 100, chame o callback com: callback(new Error("Usuário não encontrado"), null), caso contrário, retorne o usuário normalmente, depois teste os ids 0, 50 e 200.*/
+// Teste com ids válidos e inválidos
+console.log("Teste com id 1:");
+testarFluxo(1);
+
+console.log("Teste com id 0:");
+testarFluxo(0);
+
+console.log("Teste com id 200:");
+testarFluxo(200);
+
+console.log("Teste com id 50:");
+testarFluxo(50);

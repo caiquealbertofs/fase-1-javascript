@@ -1,29 +1,32 @@
 console.log("Primeiro dia começando!");
 
 // =================================
-// TEORIA - apenas para estudo
+// TEORIA — APENAS PARA ESTUDO
 // =================================
 
-/* 3 formas de declarar variaveis */
-var nome = "João"; // antiga, evitar isso
-let idadeExemplo = 25; // use quando o valor pode mudar
-const pais = "Brasil"; // use quando o valor não vai mudar
+// Três formas de declarar variáveis
+var nome = "João"; // Forma antiga; evite usar.
+let idadeExemplo = 25; // Use quando o valor puder mudar.
+const pais = "Brasil"; // Use quando o valor não mudar.
 
-/* Os tipos de dados Basicos */
-let texto = "Olá mundo"; // string - textos
-let numero = 42; // number - numeros
-let preco = 9.99; // number - decimais tambem
-let ativo = true; // boolean - true ou false
-let vazio = null; // null - ausencia intencional de valor
-let indefinido = undefined; // undefined - valor nao definido
+// Tipos de dados básicos
+let texto = "Olá mundo"; // string: textos
+let numero = 42; // number: números inteiros
+let preco = 9.99; // number: números decimais
+let ativo = true; // boolean: true ou false
+let vazio = null; // null: ausência intencional de valor
+let indefinido = undefined; // undefined: valor não definido
 
-// DICA: interpolação de variaveis e o jeito moderno de se fazer, utilizando `` e `${}`
+// Dica: use crases e ${} para interpolar variáveis.
 
 // =================================
-// EXERCICIOS
+// EXERCÍCIOS
 // =================================
 
-/* EXERCICIO 1 - CADASTRO: CRIE VARIAVEIS PARA REPRESENTAR UMA PESSOA COM ESSAS INFORMACOES*/
+/*
+EXERCÍCIO 1 — Cadastro:
+Crie variáveis para representar uma pessoa com as informações solicitadas.
+*/
 let nomeCompleto = "João Silva";
 let idade = 25;
 let cidade = "São Paulo";
@@ -37,8 +40,11 @@ console.log(`
   Empregado: ${empregado}
   Salário: ${salario}
 `);
-/* EXERCICIO 2 - INFORMAÇÃO: montar uma frase com as variaveis ja existentes dentro de uma variavel */
-let statusEmprego = empregado ? "está empregado" : "não está empregado"; // operador ternario, que e basicamente uma estrutura compacta para uma tomada de decisao que avalia uma condicao e retorna um de dois valores possiveis.
+/*
+EXERCÍCIO 2 — Informação:
+Monte uma frase em uma variável usando as variáveis já existentes.
+*/
+let statusEmprego = empregado ? "está empregado" : "não está empregado"; // O operador ternário escolhe entre dois valores conforme uma condição.
 
 let descricao = `${nomeCompleto} tem ${idade} anos, mora em ${cidade} e atualmente ${statusEmprego} com salário de R$ ${salario}`;
 

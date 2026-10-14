@@ -1,51 +1,51 @@
 // =================================
-// TEORIA - apenas para estudo
+// TEORIA — APENAS PARA ESTUDO
 // =================================
 
-// Array e uma lista ordenada de valores
-// Cada item tem um indice que começa em 0
+// Um array é uma lista ordenada de valores.
+// Cada item tem um índice que começa em 0.
 let frutas = ["maça", "banana", "laranja"];
 console.log(frutas[0]); // "maça"
 console.log(frutas[1]); // "banana"
 console.log(frutas[2]); // "laranja"
 
-/* Propriedade length = tamanho do array */
+// A propriedade length informa o tamanho do array.
 console.log(frutas.length); // 3
 
-/* Ultimo item sempre e length -1 */
+// O índice do último item é sempre length - 1.
 console.log(frutas[frutas.length - 1]); // "laranja"
 
 // =================================
 // MANIPULANDO ARRAYS
 // =================================
 
-/* .push() = adiciona no final */
+// .push() adiciona um item ao final.
 frutas.push("uva");
 console.log(frutas);
 
-/* .pop() = remova o ultimo e retorna ele */
+// .pop() remove e retorna o último item.
 let removido = frutas.pop();
 console.log(removido);
 console.log(frutas);
 
-/* .unshift() = adiciona no inicio */
+// .unshift() adiciona um item no início.
 frutas.unshift("morango");
 console.log(frutas);
 
-/* .shift() = remove o primeiro e retorna ele */
+// .shift() remove e retorna o primeiro item.
 let primeiro = frutas.shift();
 console.log(primeiro);
 
-/* .indexOf() = retorna o indice de um item (-1 se não encontrar) */
+// .indexOf() retorna o índice de um item (-1 se não encontrar).
 console.log(frutas.indexOf("banana")); // 1
 console.log(frutas.indexOf("uva")); // -1
 
-/* .include() = retorna true se o item existir */
+// .includes() retorna true se o item existir.
 console.log(frutas.includes("banana")); // true
 console.log(frutas.includes("uva")); // false
 
-/*.splice() = remove ou substitui itens em qualquer posição */
-frutas.splice(1, 1); // splice(indice, quantos remover) // remove 1 item do indice 1
+// .splice() remove ou substitui itens em qualquer posição.
+frutas.splice(1, 1); // Sintaxe: splice(índice, quantidade a remover).
 console.log(frutas); // ["maça", "laranja"]
 
 // =================================
@@ -54,35 +54,42 @@ console.log(frutas); // ["maça", "laranja"]
 
 let numeros = [1, 2, 3, 4, 5];
 
-/* .map() = transforma cada item e retorna um novo array */
+// .map() transforma cada item e retorna um novo array.
 let dobrados = numeros.map((n) => n * 2);
 console.log(dobrados); // [2, 4, 6, 8, 10]
 
-/* .filter() = filtra itens que passam na condicao */
+// .filter() filtra itens que atendem à condição.
 let pares = numeros.filter((n) => n % 2 === 0);
 console.log(pares);
 
-// .find() — retorna o PRIMEIRO item que passa na condição
+// .find() retorna o primeiro item que atende à condição.
 let maiorQueTres = numeros.find((n) => n > 3);
 console.log(maiorQueTres); // 4
 
-/* .reduce() = acumula valores em um unico resultado */
+// .reduce() acumula valores em um único resultado.
 let soma = numeros.reduce((acumulador, n) => acumulador + n, 0);
 console.log(soma); // 15
 
-/* .forEach() = percorre o array (nao retorna nada, so executa) */
+// .forEach() percorre o array; não retorna um valor, apenas executa uma ação.
 numeros.forEach((n) => console.log(n));
 
-// DIFERENÇA IMPORTANTE:
-// map/filter/find/reduce = retornam um novo valor, nao alteram o original
-// push/pop/splice = alteram o array original, ou seja, uma mutacao
+// Diferença importante:
+// map/filter/find/reduce retornam um valor e não alteram o array original.
+// push/pop/splice alteram o array original (mutação).
 
 // =================================
-// EXERCICIOS
+// EXERCÍCIOS
 // =================================
 
-/* EXERCICIO 1 - LISTA DE COMPRAS: CRIE UM ARRAY LISTACOMPRAS COM 5 ITENS.
-DEPOIS: ADICIONA 2 ITENS NO FINAL COM PUSH, REMOVA O ÚLTIMO ITEM COM POP E IMPRIMA QUAL FOI REMOVIDO, VERIFIQUE SE LEITE ESTÁ NA LISTA COM INCLUDES, IMPRIMA O TOTAL DE ITENS COM O LENGTH, IMPRIMA TODOS OS ITENS USANDO FOR ... OF */
+/*
+EXERCÍCIO 1 — Lista de compras:
+Crie um array listaCompras com cinco itens. Depois:
+- Adicione dois itens ao final com push.
+- Remova o último item com pop e imprima o item removido.
+- Verifique com includes se "Leite" está na lista.
+- Imprima a quantidade de itens usando length.
+- Imprima todos os itens usando for...of.
+*/
 console.log("========== EXERCICIO 1 ==========");
 let listaCompras = ["Leite", "Presunto", "Queijo", "Café", "Refrigerante"];
 
@@ -98,10 +105,15 @@ for (let item of listaCompras) {
   console.log(item);
 }
 
-/* EXERCICIO 2 - TURMA DE ALUNOS: CRIE UM ARRAY NOTAS COM VALORES [7, 4, 9, 6, 8, 3, 10, 5].
-USANDO OS METODOS MODERNOS: USE FILTER PARA CRIAR UM ARRAY SO COM NOTAS APROVADAS (>=7),
-USE MAP PARA CRIAR UM ARRAY COM CADA NOTA MULTIPLICA POR 10 (EX: VIRAR PORCENTAGEM),
-USE REDUCE PARA CALCULAR A MEDIA DA TURMA, IMPRIMA OS TRES RESULTADOS */
+/*
+EXERCÍCIO 2 — Turma de alunos:
+Crie um array notas com os valores [7, 4, 9, 6, 8, 3, 10, 5].
+Usando os métodos modernos:
+- Use filter para criar um array apenas com notas aprovadas (>= 7).
+- Use map para multiplicar cada nota por 10 (ex.: converter em porcentagem).
+- Use reduce para calcular a média da turma.
+- Imprima os três resultados.
+*/
 console.log("========== EXERCICIO 2 ==========");
 let notas = [7, 4, 9, 6, 8, 3, 10, 5];
 
@@ -118,10 +130,15 @@ console.log(`${aprovados}
 ${notasPercentual}
 ${notasMedia}`);
 
-/* EXERCICIO 3 - NUMEROS: CRIE UM ARRAY NUMEROS COM VALORES [15, 3, 9, 21, 7, 12, 1, 18]. DEPOIS: USE FIND PARA ENCONTRAR O PRIMEIRO NUMERO MAIOR QUE 10,
-USE FILTER PARA CRIAR ARRAY SO COM NUMEROS IMPARES,
-USE MAP PARA CRIAR UM ARRAY COM A RAIZ QUADRADA DE CADA NUMERO, DICA: MATH.SQRT(NUMERO),
-IMPRIMA OS TRES RESULTADOS */
+/*
+EXERCÍCIO 3 — Números:
+Crie um array numeros com os valores [15, 3, 9, 21, 7, 12, 1, 18]. Depois:
+- Use find para encontrar o primeiro número maior que 10.
+- Use filter para criar um array apenas com números ímpares.
+- Use map para calcular a raiz quadrada de cada número.
+  Dica: Math.sqrt(numero).
+- Imprima os três resultados.
+*/
 console.log("========== EXERCICIO 3 ==========");
 let valores = [15, 3, 9, 21, 7, 12, 1, 18];
 

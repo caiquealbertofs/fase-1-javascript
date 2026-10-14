@@ -1,40 +1,47 @@
 // =================================
-// TEORIA - apenas para estudo
+// TEORIA — APENAS PARA ESTUDO
 // =================================
 
-/* FOR = quando você sabe quantas vezes vai repetir*/
+// FOR: use quando souber quantas vezes precisa repetir.
 // for (inicio; condição; incremento)
 for (let i = 0; i < 5; i++) {
   console.log(i); // imprime 0 1 2 3 4 (um em cada linha)
 }
-/* WHILE = quando você não sabe quantas vezes vai repetir */
+// WHILE: use quando não souber quantas vezes precisa repetir.
 let contadorTeoria = 0;
 while (contadorTeoria < 5) {
   console.log(contadorTeoria);
-  contadorTeoria++; // incrementa 1 a cada passagem, se nao tiver isso acaba virando loop infinito
+  contadorTeoria++; // Incrementa 1 a cada passagem; sem isso, o loop pode ser infinito.
 }
-/* FOR...OF = para percorrer arrays (aprenderemos arrays no proximo dia, preview aqui) */
+// FOR...OF: use para percorrer arrays (veremos arrays no próximo dia).
 let frutas = ["maçã", "banana", "laranja"];
 for (let fruta of frutas) {
   console.log(fruta);
 }
-//Operadores de incremente e decremento:
-// i++ soma 1
-// i-- subtrai 1
+// Operadores de incremento e decremento:
+// i++   soma 1
+// i--   subtrai 1
 // i += 2 soma 2
-// i*= 3 multiplica por 3
+// i *= 3 multiplica por 3
 
 // =================================
-// EXERCICIOS
+// EXERCÍCIOS
 // =================================
 
-/* EXERCICIO 1 - TABUADA: CRIE UM PROGRAMA QUE IMPRIMA A TABUADA DO NÚMERO 7 DO 0 AO 10, USANDO FOR */
+/*
+EXERCÍCIO 1 — Tabuada:
+Imprima a tabuada do número 7, do 0 ao 10, usando for.
+*/
 let sete = 7;
 for (let i = 0; i < 11; i++) {
   console.log(sete * i);
 }
 
-/* EXERCICIO 2 - SOMA ACUMULADA: USANDO WHILE, SOME TODOS OS NÚMEROS DE 1 ATÉ 100 E IMPRIMA, O RESULTADOCORRETO É 5050*/
+/*
+EXERCÍCIO 2 — Soma acumulada:
+Usando while, some e imprima todos os números de 1 até 100.
+O resultado esperado é 5050.
+*/
 let contadorSoma = 1;
 let soma = 0;
 while (contadorSoma <= 100) {
@@ -43,14 +50,23 @@ while (contadorSoma <= 100) {
 }
 console.log(soma);
 
-/* EXERCICIO 3 - NUMEROS PARES: USANDO FOR, IMPRIMA TODOS OS NUMEROS PARES ENTRE 0 E 20. DICA: UM NUMERO E PAR QUANDO O RESTO DA DIVISAO POR 2 E ZERO. EM JAVA SCRIPT O OPERADOR DE RESTO E %*/
+/*
+EXERCÍCIO 3 — Números pares:
+Usando for, imprima todos os números pares entre 0 e 20.
+Dica: um número é par quando o resto da divisão por 2 é zero.
+Em JavaScript, o operador de resto é %.
+*/
 for (let i = 0; i <= 20; i++) {
   if (i % 2 == 0) {
     console.log(i);
   }
 }
 
-/* EXERCICIO 4 - CONTAGEM REGRESSIVA: USANDO FOR, IMPRIMA UMA CONTAGEM REGRESSIVA DE 10 ATÉ 1, DEPOIS IMPRIMA "Feliz Ano Novo!" */
+/*
+EXERCÍCIO 4 — Contagem regressiva:
+Usando for, imprima uma contagem regressiva de 10 até 1 e, depois,
+imprima "Feliz Ano Novo!".
+*/
 for (let i = 10; i >= 1; i--) {
   console.log(i);
 }

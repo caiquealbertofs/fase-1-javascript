@@ -1,4 +1,19 @@
-/*EXERCICIO ADICIONAL - ELEICAO: USE O ARRAY ELEICAO COM PELO MENOS 15 OBJETOS, CADA UM COM NOME, ESTADO (SENDO 5 ESTADOS), NUMERO, VOTOS, PARTIDO (SENDO 3 PARTIDOS). COM APENAS 10 CADEIRAS, DESCUBRA QUAIS CANDIDATOS FORAM ELEITOS USANDO O SISTEMA PROPORCIONAL ABERTO, PROPORCIONAL DE LISTA FECHADA E MAJORITARIO SIMPLES. NO FIM IMPRIMA O RESULTADO DOS 3(DICAS: UTILIZE O NEW SET(...) PARA CRIAR UM ARRAY COM PROPRIEDADES SEM REPETIR, E ....SIZE PARA SABER O TAMANHO*/
+// =================================
+// EXERCÍCIO ADICIONAL — ELEIÇÃO
+// =================================
+
+/*
+Use o array eleicao com pelo menos 15 objetos. Cada objeto deve ter nome,
+estado (cinco estados no total), número, votos e partido (três partidos).
+
+Com apenas 10 cadeiras, descubra quais candidatos foram eleitos usando:
+- Sistema proporcional de lista aberta.
+- Sistema proporcional de lista fechada.
+- Sistema majoritário simples.
+
+Imprima os resultados dos três sistemas.
+Dica: use new Set(...) para obter valores sem repetição e .size para contar.
+*/
 console.log("===== EXERCICIO ADICIONAL - ELEIÇÃO =====");
 
 const cadeiras = 10;
@@ -232,4 +247,4 @@ exibirEleitos(
 );
 exibirEleitos("ELEITOS - MAJORITÁRIA SIMPLES", eleitosMajoritaria(eleicao));
 
-/* OBVIAMENTE O EXERCICIO FOI FEITO COM A AJUDA DE IA */
+// Observação: este exercício foi feito com ajuda de IA.

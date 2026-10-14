@@ -1,9 +1,9 @@
 // =================================
-// TEORIA - apenas para estudo
+// TEORIA — APENAS PARA ESTUDO
 // =================================
 
-// Objeto e uma colecao de propriedades no formato chave: valor
-// Use quando os dados tem significado e nome proprio
+// Um objeto é uma coleção de propriedades no formato chave: valor.
+// Use objetos quando os dados têm significado e nomes próprios.
 const pessoa = {
   nomeTeoria: "João",
   idade: 25,
@@ -11,25 +11,25 @@ const pessoa = {
   empregado: true,
 };
 
-/* Acessando propriedades */
+// Acessando propriedades.
 console.log(pessoa.nomeTeoria); // "João" - notacao de ponto
 console.log(pessoa["idade"]); // 25 - notacao de colchetes (util quando a chave e dinamica)
 
-/* Modificando propriedades */
+// Modificando propriedades.
 pessoa.idade = 26;
 console.log(pessoa.idade);
 
-/* Adicionando novas propriedades */
+// Adicionando novas propriedades.
 pessoa.email = "joão@email.com";
 console.log(pessoa);
 
-/* Removendo propriedades */
+// Removendo propriedades.
 delete pessoa.empregado;
 console.log(pessoa);
 
-/* Verificando se uma propriedade existe */
-console.log("nomeTeoria" in pessoa); //true
-console.log("salario" in pessoa); //false
+// Verificando se uma propriedade existe.
+console.log("nomeTeoria" in pessoa); // true
+console.log("salario" in pessoa); // false
 
 // =================================
 // MÉTODOS DENTRO DE OBJETOS
@@ -43,7 +43,7 @@ const carro = {
     console.log("Vrum!");
   },
   descricao: function () {
-    //use function() para acessar o proprio objeto com this
+        // Use function() para acessar o próprio objeto com this.
     return `${this.marca} ${this.modelo} ${this.ano}`;
   },
 };
@@ -52,7 +52,7 @@ carro.ligar();
 console.log(carro.descricao());
 
 // =================================
-// DESTRUCTURING — extrair propriedades em variaveis
+// DESTRUCTURING — EXTRAINDO PROPRIEDADES EM VARIÁVEIS
 // =================================
 
 const { nomeTeoria, idade, cidade } = pessoa;
@@ -60,27 +60,27 @@ console.log(nomeTeoria); // "João"
 console.log(idade); // 26
 console.log(cidade); // "São Paulo"
 
-/* Destructuring com renomeacao */
+// Destructuring com renomeação.
 
 const { nomeTeoria: nomeCompleto, idade: anos } = pessoa;
 console.log(nomeCompleto); // "João"
 console.log(anos); // 26
 
 // =================================
-// SPREAD OPERATOR — copiar e mesclar objetos
+// SPREAD OPERATOR — COPIANDO E MESCLANDO OBJETOS
 // =================================
 const endereco = { rua: "Av. Paulista", numero: 1000 };
 const pessoaCompleto = { ...pessoa, ...endereco };
 console.log(pessoaCompleto);
 
-/* Copiar objeto sem referencia */
+// Copiando um objeto sem compartilhar a referência.
 const copia = { ...pessoa };
 copia.nomeTeoria = "Maria";
-console.log(pessoa.nomeTeoria); // "João" - original nao foi alterado
+console.log(pessoa.nomeTeoria); // "João" — o original não foi alterado.
 console.log(copia.nomeTeoria); // "Maria"
 
 // =================================
-// ARRAY DE OBJETOS — o mais usado no mercado
+// ARRAY DE OBJETOS — MUITO USADO NO MERCADO
 // =================================
 
 const produtosTeoria = [
@@ -90,7 +90,7 @@ const produtosTeoria = [
   { id: 4, nome: "Monitor", preco: 1200, estoque: 5 },
 ];
 
-/* Combinando com metodos de array */
+// Combinando com métodos de array.
 const caros = produtosTeoria.filter((p) => p.preco > 200);
 console.log(caros);
 
@@ -101,10 +101,19 @@ const totalEstoque = produtosTeoria.reduce((acc, p) => acc + p.estoque, 0);
 console.log(totalEstoque); // 90
 
 // =================================
-// EXERCICIOS
+// EXERCÍCIOS
 // =================================
 
-/* EXERCICIO 1 - CADASTRO DE USUARIOS: CRIE UM OBJETO USUARIO COM PROPRIEDADES: NOME, EMAIL, IDADE, PLANO(EX.: "GRATUITO") E ATIVO(BOOLEAN). DEPOIS: IMPRIMA O NOME E EMAIL USANDO DESTRUCTURING, ATUALIZE O PLANO PARA "PREMIUM", ADICIONE UMA PROPRIEDADE ULTIMOACESSO COM A DATA DE HOJE COMO STRING, IMPRIMA O OBJETO COMPLETO ATUALIZADO */
+/*
+EXERCÍCIO 1 — Cadastro de usuários:
+Crie um objeto usuario com as propriedades nome, email, idade, plano
+(ex.: "GRATUITO") e ativo (boolean).
+Depois:
+- Imprima nome e email usando destructuring.
+- Atualize o plano para "PREMIUM".
+- Adicione ultimoAcesso com a data de hoje como string.
+- Imprima o objeto completo atualizado.
+*/
 console.log("===== EXERCICIO 1 - CADASTRO DE USUARIOS ======");
 const usuario = {
   nome: "Roberto Alberto Barbosa Santos",
@@ -123,7 +132,16 @@ usuario.ultimoAcesso = "16/09/26";
 
 console.log(usuario);
 
-/* EXERCICIO 2 - SISTEMA DE PRODUTOS: CRIE UM ARRAY PRODUTOS COM PELO MENOS 5 OBJETOS, CADA UM COM NOME, PRECO E CATEGORIA (EX.: "ELETRONICO", "ROUPA", "ALIMENTO"). DEPOIS: USE .FILTER() PARA LISTAR SO OS PRODUTOS DE UMA CATEGORIA ESPECIFICA, USE .MAP() PARA CRIAR UM ARRAY SO COM OS NOMES DOS PRODUTOS, USE .FIND() PARA ENCONTRAR UM PRODUTO PELO NOME, USE .REDUCE() PARA CALCULAR O VALOR TOTAL DE TODOS OS PRODUTOS IMPRIMA TODOS OS RESULTADOS */
+/*
+EXERCÍCIO 2 — Sistema de produtos:
+Crie um array produtos com pelo menos cinco objetos, cada um com nome, preço
+e categoria (ex.: "ELETRONICO", "ROUPA", "ALIMENTO"). Depois:
+- Use filter para listar os produtos de uma categoria específica.
+- Use map para criar um array apenas com os nomes dos produtos.
+- Use find para encontrar um produto pelo nome.
+- Use reduce para calcular o valor total dos produtos.
+- Imprima todos os resultados.
+*/
 console.log("===== EXERCICIO 2 - SISTEMA DE PRODUTOS =====");
 const produtos = [
   { id: 1, nome: "Pão", preco: 5.0, categoria: "Alimento" },
@@ -145,7 +163,15 @@ console.log(tomate);
 let valorTotal = produtos.reduce((a, n) => a + n.preco, 0);
 console.log(valorTotal);
 
-/* EXERCICIO 3 - AGENDA DE CONTATOS: CRIE UM ARRAY CONTATOS COM PELO MENOS 5 OBJETOS, CADA UM COM NOME, TELEFONE E FAVORITO(BOLEAN). DEPOIS: USE .FILTER() PARA LISTAR SO OS CONTATOS FAVORITOS, USE .MAP() PARA CRIAR UMA LISTA FORMATADA "NOME: JOAO | TEL: 11999999999", USE .FIND() PARA BUSCAR UM CONTATO PELO NOME E IMPRIMA TUDO */
+/*
+EXERCÍCIO 3 — Agenda de contatos:
+Crie um array contatos com pelo menos cinco objetos, cada um com nome,
+telefone e favorito (boolean). Depois:
+- Use filter para listar apenas os contatos favoritos.
+- Use map para criar uma lista no formato "NOME: JOAO | TEL: 11999999999".
+- Use find para buscar um contato pelo nome.
+- Imprima todos os resultados.
+*/
 console.log("===== EXERCICIO 3 - CONTATOS =====");
 const contatos = [
   { id: 1, nome: "Caique", numero: "11911111111", favorito: true },
@@ -164,4 +190,4 @@ console.log(lista);
 let giovani = contatos.find((c) => c.nome === "Giovani");
 console.log(giovani);
 
-/* O exercicio adicional foi movido para exercicio-adicional.js. */
+// O exercício adicional foi movido para exercicio-adicional.js.

@@ -1,19 +1,22 @@
-//Mini Projeto: Calculadora de gorjeta
-/* Une tudo que aprendeu nos dois dias. Sem copiar — escreva do zero.
+// =================================
+// MINI PROJETO — CALCULADORA DE GORJETA
+// =================================
+
+/*
+Una o conteúdo aprendido nos dois dias. Escreva o programa do zero, sem copiar.
 
 O que o programa deve fazer:
-
-Declara variaveis para valorConta (ex: 150), qualidadeServico (ex: "Bom") e numeroPessoas (ex: 4)
-
-Cria uma funcao calcularGorjeta que recebe o valor da conta e a qualidade do serviço e retorna o percentual de gorjeta:
-"excelente" : 20%
-"bom" : 15%
-"regular" : 10%
-qualquer outro : 5%
-
-Cria uma função dividirConta que recebe o valor total e o número de pessoas e retorna quanto cada um paga
-
-O programa deve imprimir:
+- Declarar valorConta (ex.: 150), qualidadeServico (ex.: "Bom") e
+  numeroPessoas (ex.: 4).
+- Criar calcularGorjeta, que recebe o valor da conta e a qualidade do serviço,
+  retornando o percentual:
+  - "excelente": 20%
+  - "bom": 15%
+  - "regular": 10%
+  - qualquer outro valor: 5%
+- Criar dividirConta, que recebe o valor total e o número de pessoas e retorna
+  quanto cada pessoa paga.
+- Imprimir o resumo no formato abaixo:
 
 ===== CALCULADORA DE GORJETA =====
 Valor da conta: R$ 150

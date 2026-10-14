@@ -1,27 +1,31 @@
 // =================================
-// TEORIA - apenas para estudo
+// TEORIA — APENAS PARA ESTUDO
 // =================================
 
-/* Condicionais permitem que o código tome decisoes */
+// Condicionais permitem que o código tome decisões.
 
-// Estrutura basica:
-// if (condição) { executa se true }
-// else if (outra condicao) { executa se essa for true }
-// else { executa se nenhuma for true }
+// Estrutura básica:
+// if (condição) { executa se for true }
+// else if (outra condição) { executa se essa for true }
+// else { executa se nenhuma condição for true }
 
-// Operadores de comparacao:
+// Operadores de comparação:
 // >   maior que
 // <   menor que
 // >=  maior ou igual
 // <=  menor ou igual
-// === igual (use sempre esse, nunca ==)
+// === igual (use sempre este, nunca ==)
 // !== diferente
 
 // =================================
-// EXERCICIOS
+// EXERCÍCIOS
 // =================================
 
-/* EXERCICIO 1 - PROVA: DECLARE UMA VARIAVEL NOTA 7 E CRIE UMA CONDICIONAL DE APROVADO, RECUPARECAO E REPROVADO*/
+/*
+EXERCÍCIO 1 — Prova:
+Declare uma variável nota com valor 7 e crie uma condicional que classifique
+o resultado como aprovado, recuperação ou reprovado.
+*/
 let nota = 4;
 let resultadoNota;
 if (nota >= 7) {
@@ -33,7 +37,10 @@ if (nota >= 7) {
 }
 console.log(resultadoNota);
 
-/* EXERCICIO 2 - IMC: CRIE UM PROGRAMA QUE AVALIA O IMC DE UMA PESSOA*/
+/*
+EXERCÍCIO 2 — IMC:
+Crie um programa que avalie o IMC de uma pessoa.
+*/
 let peso = 83;
 let altura = 1.83;
 let imc = peso / (altura * altura);

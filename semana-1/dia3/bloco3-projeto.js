@@ -1,4 +1,19 @@
-/*PROJETO DO DIA - SISTEMA DE NOTAS ESCOLAR: CRIE UM ARRAY TURMA COM PELO MENO 10 ALUNOS, CADA ALUNO É UM OBJETO COM NOME, NOTA E TURNO (MANHA, TARDE OU NOITE). DEPOIS CRIE FUNCOES PARA: LISTARAPROVADOS(TURMA) -  RETORNA ARRAY COM OBJETOS DOS ALUNOS COM NOTA >=7. LISTARREPROVADOS(TURMA) -  RETORNA ARRAY COM OBJETOS DOS ALUNOS COM NOTA <5. CALCULARMEDIA(TURMA) RETORNA A MEDIA GERAL DA TURMA COM 2 CASAS DECIMAIS. MELHORALUNO(TURMA) - RETORNA O ALUNO COM A MELHOR NOTA(DICA: USE .REDUCE()). ALUNOSPORTURNO(TURMA, TURNO) - RECEBE A TURMA E O TURNO E RETORNA SÓ O ALUNOS DAQUELE TURNO */
+// =================================
+// PROJETO — SISTEMA DE NOTAS ESCOLAR
+// =================================
+
+/*
+Crie um array turma com pelo menos 10 alunos. Cada aluno deve ser um objeto
+com nome, nota e turno (manhã, tarde ou noite).
+
+Depois, crie as seguintes funções:
+- listarAprovados(turma): retorna os alunos com nota >= 7.
+- listarReprovados(turma): retorna os alunos com nota < 5.
+- calcularMedia(turma): retorna a média geral com duas casas decimais.
+- melhorAluno(turma): retorna o aluno com a melhor nota.
+  Dica: use reduce().
+- alunosPorTurno(turma, turno): retorna os alunos daquele turno.
+*/
 
 let turma = [
   { nome: "João", notas: [7, 8, 9], turno: "manha" },

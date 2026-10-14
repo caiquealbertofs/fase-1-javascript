@@ -1,33 +1,33 @@
 // =================================
-// TEORIA - apenas para estudo
+// TEORIA — APENAS PARA ESTUDO
 // =================================
 
-// Módulos permitem dividir o código em arquivos separados
-// Cada arquivo é um módulo — tem seu próprio escopo
-// O que não for exportado não existe fora do arquivo
+// Módulos permitem dividir o código em arquivos separados.
+// Cada arquivo é um módulo com seu próprio escopo.
+// O que não for exportado não fica disponível fora do arquivo.
 
 // =================================
-// COMMONJS — sistema antigo, ainda muito usado no Node.js
+// COMMONJS — SISTEMA ANTIGO, AINDA MUITO USADO NO NODE.JS
 // =================================
 
-// EXPORTAR (em outro arquivo, ex: matematica.js)
+// Exportar (em outro arquivo, por exemplo, matematica.js):
 // module.exports = { somar, subtrair }
-// ou exportar um item só:
+// Ou exportar apenas um item:
 // module.exports = somar
 
-// IMPORTAR
+// Importar:
 // const { somar, subtrair } = require('./matematica')
 // const somar = require('./matematica')
 
 // =================================
-// ES MODULES — sistema moderno
+// ES MODULES — SISTEMA MODERNO
 // =================================
 
-// EXPORTAR (em outro arquivo)
+// Exportar (em outro arquivo):
 // export const somar = (a, b) => a + b
 // export default somar  // exportação padrão, só uma por arquivo
 
-// IMPORTAR
+// Importar:
 // import { somar } from './matematica.js'
 // import somar from './matematica.js'  // importa o default
 
@@ -35,10 +35,10 @@
 // QUAL USAR?
 // =================================
 
-// Node.js usa CommonJS por padrão (require/module.exports)
+// Node.js usa CommonJS por padrão (require/module.exports).
 // Para usar ES Modules no Node, precisa de uma das duas:
-// 1. Renomear o arquivo para .mjs
-// 2. Adicionar "type": "module" no package.json
+// 1. Renomear o arquivo para .mjs.
+// 2. Adicionar "type": "module" no package.json.
 
-// No mercado você vai ver os dois. Aprenda os dois.
-// Neste projeto vamos usar CommonJS por ser o padrão do Node.js
+// No mercado, você encontrará os dois formatos; aprenda ambos.
+// Neste projeto, usaremos CommonJS por ser o padrão do Node.js.

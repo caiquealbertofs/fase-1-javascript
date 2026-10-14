@@ -1,49 +1,52 @@
 // =================================
-// TEORIA - apenas para estudo
+// TEORIA — APENAS PARA ESTUDO
 // =================================
 
-// Funcoes sao blocos de codigos que sao criados criados para executar uma determinada tarefa e podendo ser reutilizada.
+// Funções são blocos de código criados para executar tarefas reutilizáveis.
 
-/* Funcao declarada = forma tradicional */
+// Função declarada: forma tradicional.
 function somarTeoria(a, b) {
   return a + b;
 }
 console.log(somarTeoria(3, 4));
 
-/* Arrow function =
-forma moderna, use essa */
+// Arrow function: forma moderna.
 const multiplicarTeoria = (a, b) => {
   return a * b;
 };
 console.log(multiplicarTeoria(3, 4));
 
-/* Arrow function curta = quando tem so um return pode simplificar */
+// Arrow function curta: quando há apenas um return, é possível simplificar.
 const dividirTeoria = (a, b) => a / b;
 console.log(dividirTeoria(10, 2));
 
-/* Parametros com valor padrao */
+// Parâmetros com valor padrão.
 const saudacao = (nome = "visitante") => {
   return `Olá, ${nome}!`;
 };
 console.log(saudacao("João"));
 console.log(saudacao());
 
-/* Funcao sem retorno = apenas executa uma acao */
+// Função sem retorno: executa uma ação.
 const imprimirLinha = () => {
   console.log("====================");
 };
 imprimirLinha();
 
-// IMPORTANTE:
-// diferenca entre parametro e argumento
-// Parametro: variavel na definicao da funcao (a, b)
-// Argumento: valor passado na chamada funcao (3, 4)
+// Diferença entre parâmetro e argumento:
+// Parâmetro: variável na definição da função (a, b).
+// Argumento: valor passado na chamada da função (3, 4).
 
 // =================================
-// EXERCICIOS
+// EXERCÍCIOS
 // =================================
 
-/* EXERCICIO 1 - CALCULADORA: CRIE QUATRO ARROW FUNCTIONS: SOMAR, SUBTRAIR, MULTIPLICAR E DIVIDIR. CADA UMA RECEBE DOIS NUMEROS E RETORNA O RESULTADO. DEPOIS TESTE CADA UMA COM CONSOLE.LOG. */
+/*
+EXERCÍCIO 1 — Calculadora:
+Crie quatro arrow functions: somar, subtrair, multiplicar e dividir.
+Cada uma recebe dois números e retorna o resultado.
+Depois, teste cada função com console.log.
+*/
 const somar = (a, b) => {
   return a + b;
 };
@@ -61,7 +64,11 @@ console.log(subtrair(5, 4));
 console.log(multiplicar(3, 2));
 console.log(dividir(9, 3));
 
-/* EXERCICIO 2 - VERIFICADOR DE PAR OU IMPAR: CRIE UMA ARROW FUNCTIOR E PAR QUE RECEBE UM NUMERO E RETORNA TRUE SE FOR PAR OU FALSE SE FOR IMPAR. TESTE COM OS NUMEROS 4, 7 E 10. */
+/*
+EXERCÍCIO 2 — Verificador de par ou ímpar:
+Crie uma arrow function ePar que receba um número e retorne true se for par
+ou false se for ímpar. Teste com os números 4, 7 e 10.
+*/
 const verificador = (a) => {
   if (a % 2 === 0) {
     return "É par";
@@ -73,7 +80,13 @@ console.log(verificador(4));
 console.log(verificador(7));
 console.log(verificador(10));
 
-/* EXERCICIO 3 - CALCULADORA DE IMC: TRANSFORME O EXERCICIO DO IMC DO DIA ANTERIOR EM UMA FUNCAO. CRIE UMA ARROW FUNCTION CALCULARIMC QUE RECEBE PESO E ALTURA E RETORNA A CLASSIFICACAO JA COMO TEXTO ("PESO NORMAL", "SOBREPESO" ETC.). TESTE COM PELO MENOS 3 COMBINACOES DIFERENTES DE PESO E ALTURA. */
+/*
+EXERCÍCIO 3 — Calculadora de IMC:
+Transforme o exercício de IMC do dia anterior em uma função.
+Crie uma arrow function calcularIMC que receba peso e altura e retorne
+a classificação em texto ("peso normal", "sobrepeso" etc.).
+Teste com pelo menos três combinações diferentes de peso e altura.
+*/
 const imc = (a, b) => {
   let peso = a;
   let altura = b;
@@ -93,7 +106,12 @@ console.log(imc(65, 1.83));
 console.log(imc(87, 1.83));
 console.log(imc(150, 1.83));
 
-/* EXERCICIO 4 - TABUADA COMO FUNCAO: TRANSFORME O EXERCICIO DA TABUADA EM FUNCAO TABUADA QUE RECEBE UM NUMERO E IMPRIME A TABUADA COMPLETA DESSE NUMERO. DEPOIS CHAME A FUNCAO PARA IMPRIMIR A TABUADA DO 5 E DO 9. */
+/*
+EXERCÍCIO 4 — Tabuada como função:
+Transforme o exercício da tabuada em uma função tabuada que receba um número
+e imprima a tabuada completa desse número.
+Depois, chame a função para imprimir as tabuadas do 5 e do 9.
+*/
 const tabuada = (a) => {
   for (let i = 0; i <= 10; i++) {
     let resultado = a * i;

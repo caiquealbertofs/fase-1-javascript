@@ -1,5 +1,5 @@
 // =================================
-// TEORIA - apenas para estudo
+// TEORIA — APENAS PARA ESTUDO
 // =================================
 
 // Erros acontecem. O código profissional os antecipa e trata.
@@ -40,11 +40,11 @@ try {
 }
 
 // =================================
-// CLASSES DE ERRO CUSTOMIZADAS
+// CLASSES DE ERRO PERSONALIZADAS
 // =================================
 
-/* Erros genéricos não dizem o que aconteceu de verdade.
-No mercado criamos erros específicos para cada situação. */
+// Erros genéricos não explicam o que aconteceu.
+// Crie erros específicos para cada situação.
 
 class ErroValidacao extends Error {
   constructor(mensagem, campo) {
@@ -61,7 +61,7 @@ class ErroNaoEncontrado extends Error {
   }
 }
 
-/*Usando os erros customizados*/
+// Usando erros personalizados.
 const buscarUsuario = (id) => {
   const usuarios = [
     { id: 1, nome: "João" },
@@ -86,7 +86,7 @@ try {
 }
 
 // =================================
-// VALIDAÇÃO DE DADOS — padrão do mercado
+// VALIDAÇÃO DE DADOS — PADRÃO DO MERCADO
 // =================================
 
 const validarIdade = (idade) => {
@@ -107,10 +107,20 @@ try {
 }
 
 // =================================
-// EXERCICIOS
+// EXERCÍCIOS
 // =================================
 
-/* EXERCICIO 1 - VALIDAR DE CADASTRO: CRIE UMA FUNCAO VALIDARCADASTRO(USUARIO) QUE RECEBE UM OBJETO E VALIDA: NOME DEVE SER STRING E TER PELO MENOS 3 CARACTERES, EMAIL DEVE SER UMA STRING E CONTER @, IDADE DEVE SER NUMERO ENTRE 18 E 100, SENHA DEVE TER PELO MENOS 6 CARACTERES. LANCE UM ERROVALIDACAO COM MENSAGEM E CAMPO ESPECIFICOS PARA CADA CASO. TESTE DADOS VALIDOS E INVALIDOS. */
+/*
+EXERCÍCIO 1 — Validação de cadastro:
+Crie validarCadastro(usuario), que recebe um objeto e valida:
+- Nome: string com pelo menos três caracteres.
+- Email: string que contenha @.
+- Idade: número entre 18 e 100.
+- Senha: pelo menos seis caracteres.
+
+Lance ErroValidacao com mensagem e campo específicos para cada caso.
+Teste dados válidos e inválidos.
+*/
 const validarCadastro = (usuario) => {
   if (!usuario || typeof usuario !== "object") {
     throw new ErroValidacao("Usuário deve ser um objeto", "usuario");
@@ -163,7 +173,16 @@ try {
   console.log(`Campo: ${erro.campo} | Erro: ${erro.message}`);
 }
 
-/* EXERCICIO 2 - CALCULADORA SEGURA: CRIE UMA FUNCAO CALCULAR(A, OPERACAO, B) QUE: ACEITE A OPERAÇÃO "SOMAR", "SUBTRAIR", "MULTIPLICADOR", "DIVIDIR", LANCA ERRO SE A OPERACAO NAO EXISTIR, LANCA ERRO SE TENTAR DIVIDIR POR ZERO, LANCA ERRO SE A OU B NAO FOREM NUMEROS, RETORNE O RESULTADO FORMATADO " 10 + 5 = 15 " TESTE COM PELO MENOS 5 CENARIOS DIFERENTES, INCLUINDO CASOS DE ACERTO E ERRO*/
+/*
+EXERCÍCIO 2 — Calculadora segura:
+Crie calcular(a, operacao, b), que:
+- Aceite as operações somar, subtrair, multiplicar e dividir.
+- Lance um erro se a operação não existir.
+- Lance um erro ao tentar dividir por zero.
+- Lance um erro se a ou b não forem números.
+- Retorne o resultado formatado, por exemplo: "10 + 5 = 15".
+- Seja testada em pelo menos cinco cenários, incluindo sucesso e erro.
+*/
 const calcular = (a, operacao, b) => {
   if (a === undefined || operacao === undefined || b === undefined) {
     throw new ErroValidacao("Operação não existe", ["a", "operacao", "b"]);
@@ -218,8 +237,15 @@ try {
   console.log(`Campo: ${erro.campo} | Erro: ${erro.message}`);
 }
 
-/* EXERCICIO 3 - SISTEMA DE BUSCA COM ERROS: CRIE UM ARRAY DE PRODUTOS COM PELO MENOS 5 OBJETOS( ID, NOME, PRECO ). DEPOIS CRIE:
-BUSCARPORID(ID) QUE LANCE ERRONAOENCONTRADO SE NAO ACHAR, BUSCARPORNOME(NOME) QUE LANCE ERRO NAO ENCONTRADO SE NAO ACHAR, ATUALIZEPRECO(ID, NOVOPRECO) QUE LANCE ERRO SE PRECO FOR NEGATIVO, ZERO OU NAO FOR NUMERO */
+/*
+EXERCÍCIO 3 — Sistema de busca com erros:
+Crie um array de produtos com pelo menos cinco objetos (id, nome e preço).
+Depois, crie:
+- buscarPorId(id), que lance ErroNaoEncontrado se não encontrar o produto.
+- buscarPorNome(nome), que lance ErroNaoEncontrado se não encontrar o produto.
+- atualizePreco(id, novoPreco), que lance um erro se o preço for negativo,
+  zero ou não for um número.
+*/
 const produtos = [
   { id: 1, nome: "Teclado", preco: 150 },
   { id: 2, nome: "Mouse", preco: 80 },

@@ -97,70 +97,47 @@ EXERCICIO 2 - Callback com erro:
 - caso contrário, retorne o usuário normalmente
 - teste os ids 0, 50 e 200
 */
-
 const buscarUsuario = (id, callback) => {
-  if (id < 1) {
-    return callback(new Error("ID inválido"), null);
-  }
-
-  if (id > 100) {
-    return callback(new Error("Usuário não encontrado"), null);
-  }
-
   setTimeout(() => {
-    const usuario = { id, nome: "João" };
-    callback(null, usuario);
+    if (id < 1) {
+      callback(new Error("ID inválido"), null);
+    } else if (id > 100) {
+      callback(new Error("Usuário não encontrado"), null);
+    } else {
+      callback(null, { id, nome: "João" });
+    }
   }, 1000);
 };
-
 const buscarEndereco = (userId, callback) => {
   setTimeout(() => {
-    const endereco = { rua: "Av. Paulista", cidade: "São Paulo" };
-    callback(null, endereco);
+    callback(null, { rua: "Av. Paulista", cidade: "São Paulo" });
   }, 1000);
 };
-
 const calcularFrete = (cidade, callback) => {
   setTimeout(() => {
-    const frete = { cidade, valor: 1200 };
-    callback(null, frete);
+    callback(null, { valorFrete: 1000 });
   }, 1000);
 };
 
-const testarFluxo = (id) => {
-  buscarUsuario(id, (erro, usuario) => {
-    if (erro) {
-      console.log("Erro ao buscar usuário:", erro.message);
-      return;
-    }
-
-    buscarEndereco(usuario.id, (erroEndereco, endereco) => {
-      if (erroEndereco) {
-        console.log("Erro ao buscar endereço:", erroEndereco.message);
-        return;
-      }
-
-      calcularFrete(endereco.cidade, (erroFrete, frete) => {
-        if (erroFrete) {
-          console.log("Erro ao calcular frete:", erroFrete.message);
-          return;
-        }
-
-        console.log("Frete calculado:", frete);
-      });
+buscarUsuario(1, (erro, usuario) => {
+  if (erro) {
+    console.log(erro.message);
+    return;
+  }
+  console.log(usuario.id);
+  buscarEndereco(usuario.id, (erro, endereco) => {
+    calcularFrete(endereco.cidade, (erro, frete) => {
+      console.log("Frete:", frete);
     });
   });
-};
+});
 
-// Teste com ids válidos e inválidos
-console.log("Teste com id 1:");
-testarFluxo(1);
-
-console.log("Teste com id 0:");
-testarFluxo(0);
-
-console.log("Teste com id 200:");
-testarFluxo(200);
-
-console.log("Teste com id 50:");
-testarFluxo(50);
+[0, 2, 50, 200].forEach((id) => {
+  buscarUsuario(id, (erro, usuario) => {
+    if (erro) {
+      console.log(`ID ${id}: ${erro.message}`);
+      return;
+    }
+    console.log(`ID ${id}:`, usuario);
+  });
+});

@@ -133,11 +133,6 @@ Promise.race([buscarUsuarioPromise(1), buscarUsuarioPromise(2)]).then(
 // =================================
 
 /*
-EXERCICIO 1 - Simulando operações assíncronas (Bloco 1):
-- buscarUsuario(id, callback)
-- buscarEndereco(userId, callback)
-- calcularFrete(cidade, callback)
-
 EXERCÍCIO 1 — Reescrevendo com Promises:
 - Pegue o exercício 1 do Bloco 1 (buscarUsuario, buscarEndereco, calcularFrete).
 - Reescreva todas as funções para retornarem Promises em vez de usarem callbacks.
@@ -157,3 +152,47 @@ EXERCÍCIO 3 — Promise.allSettled:
 - Use Promise.allSettled para buscar todos os ids.
 - Imprima separadamente quantos tiveram sucesso e quais tiveram erro, incluindo o motivo.
 */
+
+const buscarUsuario = (id) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (id < 1) {
+        reject(new Error("ID inválido"));
+      } else if (id > 100) {
+        reject(new Error("Usuário não encontrado"));
+      } else {
+        resolve(null, { id, nome: "João" });
+      }
+    }, 1000);
+  });
+};
+
+const buscarEndereco = (userId) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(null, { rua: "Av. Paulista", cidade: "São Paulo" });
+    }, 1000);
+  });
+};
+
+const calcularFrete = (cidade) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(null, { valorFrete: 1000 });
+    }, 1000);
+  });
+};
+
+const buscarDashboard = (userId) => {
+  return new Promise.All([setTimeout(() => {}, 1000)]);
+};
+
+buscarUsuario(1)
+  .then((usuario) => buscarEndereco(usuario.id))
+  .then((endereco) => calcularFrete(endereco.cidade))
+  .then((frete) => {
+    console.log("Frete:", frete);
+  })
+  .catch((erro) => {
+    console.log(erro.message);
+  });

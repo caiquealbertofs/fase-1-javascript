@@ -161,7 +161,7 @@ const buscarUsuario = (id) => {
       } else if (id > 100) {
         reject(new Error("Usuário não encontrado"));
       } else {
-        resolve(null, { id, nome: "João" });
+        resolve({ id, nome: "João" });
       }
     }, 1000);
   });
@@ -170,7 +170,7 @@ const buscarUsuario = (id) => {
 const buscarEndereco = (userId) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(null, { rua: "Av. Paulista", cidade: "São Paulo" });
+      resolve({ rua: "Av. Paulista", cidade: "São Paulo" });
     }, 1000);
   });
 };
@@ -178,14 +178,74 @@ const buscarEndereco = (userId) => {
 const calcularFrete = (cidade) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(null, { valorFrete: 1000 });
+      resolve({ valorFrete: 1000 });
     }, 1000);
   });
 };
 
-const buscarDashboard = (userId) => {
-  return new Promise.All([setTimeout(() => {}, 1000)]);
+const listaPedidos = (userId) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({ pedidos: ["banana", "maça", "pera", "batata"] });
+    }, 1000);
+  });
 };
+
+// Exercicio 2
+const buscarDashboard = (userId) => {
+  return Promise.all([
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({ id: userId, nome: "João" });
+      }, 500);
+    }),
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve([
+          { id: 100, valor: 1200 },
+          { id: 123, valor: 1700 },
+        ]);
+      }, 1000);
+    }),
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve([
+          { mensagem: "Pedido enviado" },
+          { mensagem: "Pedido aprovado" },
+        ]);
+      }, 1500);
+    }),
+  ]).then(([usuario, pedidos, notificacoes]) => {
+    const dashboard = {
+      usuario: usuario,
+      pedidos: pedidos,
+      notificacoes: notificacoes,
+    };
+    console.log(dashboard);
+    return dashboard;
+  });
+};
+
+const buscarIDs = [1, -1, 5, 200, 3];
+
+let sucessos = 0;
+let erros = 0;
+
+Promise.allSettled(buscarIDs.map((id) => buscarUsuario(id))).then(
+  (resultados) => {
+    resultados.forEach((resultado) => {
+      if (resultado.status === "fulfilled") {
+        console.log({ status: "fulfilled", value: resultado.value });
+        sucessos++;
+      } else {
+        console.log({ status: "rejected", reason: resultado.reason });
+        erros++;
+      }
+    });
+    console.log(`Sucessos: ${sucessos}`);
+    console.log(`Erros: ${erros}`);
+  },
+);
 
 buscarUsuario(1)
   .then((usuario) => buscarEndereco(usuario.id))
@@ -196,3 +256,5 @@ buscarUsuario(1)
   .catch((erro) => {
     console.log(erro.message);
   });
+
+buscarDashboard(1);

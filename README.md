@@ -8,6 +8,7 @@ Exercicios e projetos da Fase 1 do plano de estudos de Backend com JavaScript.
 - semana-1/dia2 - Loops e funções
 - semana-1/dia3 - Arrays e objetos
 - semana-1/dia4 - Módulos, erros e Git
+- semana-1/dia5 - Callbacks, promises, async e await
 
 ## Tecnologias
 

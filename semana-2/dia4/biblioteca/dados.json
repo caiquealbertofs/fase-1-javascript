@@ -1,0 +1,50 @@
+{
+  "livros": [
+    {
+      "id": 1,
+      "titulo": "O Hobbit",
+      "autor": "J.R.R. Tolkien",
+      "ano": 1937,
+      "disponivel": true
+    },
+    {
+      "id": 2,
+      "titulo": "A Revolução dos Bichos",
+      "autor": "George Orwell",
+      "ano": 1945,
+      "disponivel": true
+    },
+    {
+      "id": 3,
+      "titulo": "Capitães da Areia",
+      "autor": "Jorge Amado",
+      "ano": 1937,
+      "disponivel": true
+    },
+    {
+      "id": 4,
+      "titulo": "O Alienista",
+      "autor": "Machado de Assis",
+      "ano": 1882,
+      "disponivel": false
+    }
+  ],
+  "emprestimos": [
+    {
+      "id": 1,
+      "livroId": 3,
+      "nomeUsuario": "Mariana Oliveira",
+      "dataEmprestimo": "2026-11-13T17:58:07.202Z",
+      "dataDevolucaoPrevista": "2026-11-27T17:58:07.202Z",
+      "dataDevolucaoReal": "2026-11-13T17:58:07.202Z"
+    },
+    {
+      "id": 2,
+      "livroId": 4,
+      "nomeUsuario": "Rafael Mendes",
+      "dataEmprestimo": "2026-11-13T17:58:07.202Z",
+      "dataDevolucaoPrevista": "2026-11-27T17:58:07.202Z",
+      "dataDevolucaoReal": null
+    }
+  ]
+}
